@@ -1,25 +1,39 @@
 const { Schema, model } = require("mongoose");
-const reactionSchema = require("./Reaction");
 
 // Schema to create Student model
 const userSchema = new Schema(
   {
-    thoughtText: {
+    username: {
+      type: String,
+      unique: true,
+      required: true,
+      trim: true,
+    },
+    email: {
       type: String,
       required: true,
-      //   min_length: 1,
-      max_length: 280,
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now,
+      unique: true,
+      //   Match Email ReEx
+      match: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
     },
     username: {
       type: String,
       required: true,
     },
-    reactions: [reactionSchema],
-    // TO DO: Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query.
+    // Array of _id values referencing the Thought model
+    thoughts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Thought",
+      },
+    ],
+    // Array of _id values referencing the User model (self-reference)
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     toJSON: {
@@ -27,6 +41,12 @@ const userSchema = new Schema(
     },
   }
 );
+
+// Create a virtual called friendCount that retrieves the length of the user's friends array field on query
+
+userSchema.virtual("friendCount").get(function () {
+  return this.friends.length;
+});
 
 const User = model("user", userSchema);
 
