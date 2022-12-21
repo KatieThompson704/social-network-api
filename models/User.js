@@ -16,10 +16,6 @@ const userSchema = new Schema(
       //   Match Email ReEx
       match: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
     },
-    username: {
-      type: String,
-      required: true,
-    },
     // Array of _id values referencing the Thought model
     thoughts: [
       {

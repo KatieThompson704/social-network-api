@@ -1,5 +1,19 @@
 const router = require("express").Router();
+const {
+  getUsers,
+  getSingleUser,
+  createUser,
+} = require("../../controllers/userController");
+
 // ROUTE: /api/users
+
+// 1) GET all users and 3)POST or Create a new User
+
+router.route("/").get(getUsers).post(createUser);
+
+// 2) GET a single user by its _id and populated thought and friend data
+
+router.route("/:userId").get(getSingleUser);
 
 // 1) GET all users
 
