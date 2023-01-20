@@ -19,7 +19,7 @@ This application uses Express.js for routing, a MongoDB database, and the Mongoo
 
 ### Usage
 
-Please reference the following link for a Demo video of the application:
+Please reference the following link for a Demo video of the application: https://drive.google.com/file/d/1PW92nz7FH_PdZ4wR76l7kqQarV0i-Qdu/view
 
 GitHub Repo: https://github.com/KatieThompson704/social-network-api
 
