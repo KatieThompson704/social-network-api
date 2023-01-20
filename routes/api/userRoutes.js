@@ -25,10 +25,6 @@ router.route("/:userId/friends/:friendId").post(addFriend).delete(removeFriend);
 // 2) GET a single user by its _id and populated thought and friend data
 
 // 3) POST a new user: // example data
-// {
-//     "username": "lernantino",
-//     "email": "lernantino@gmail.com"
-//   }
 
 // 4) PUT to update a user by its _id
 
